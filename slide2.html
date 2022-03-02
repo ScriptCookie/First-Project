@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="../Jquery/jquery-3.6.0.min.js"></script>
+</head>
+
+<script>
+    $(document).ready(function(){
+        var slide = $('.slide');
+        var slideLi = $('.slide li');
+        var currentIdx = 0;
+        var slideL = slideLi.length;
+
+        function Pos(num) {
+            var leftMove = -num * 210;
+            $('.slide').css({'left' : leftMove});
+            currentIdx = num;
+        }
+
+        $('.next').click(function(){
+            if (currentIdx !== slideL - 3) {
+            Pos(currentIdx + 1);
+            }
+        })
+
+        $('.prev').click(function(){
+            if (currentIdx !== 0) {
+            Pos(currentIdx - 1);
+            }
+        })
+
+    })
+</script>
+
+<style>
+    * {margin: 0; padding: 0;}
+    li {list-style: none;}
+    a {text-decoration: none;}
+
+    #slide_wrap {
+        position: relative;
+        width: 620px;
+        height: 200px;
+        margin: 0 auto;
+        overflow: hidden;
+        /* border: 2px solid black; */
+    }
+
+    .slide {
+        position: absolute;
+        display: flex;
+        top: 0;
+        left: 0;
+        transition-duration: 0.5s;
+        /* background-color: black; */
+        /* border: 2px solid black; */
+    }
+
+    #btn_wrap {
+        position: relative;
+        top : -114.8px;  
+    }
+
+    .box {
+        width: 200px;
+        height: 200px;
+        margin-right: 10px;
+        text-align: center;
+        line-height: 200px;
+        font-size: 20px;
+        font-weight: 900;
+        color: white;
+        background-color: blueviolet;
+    }
+
+    .btn {
+        text-align: center;
+    }
+
+    .btn span {
+        /* background-color: burlywood; */
+        color: white;
+        padding: 2px;
+        margin: 0 280px;
+        font-size: 20px;
+        font-weight: 900;
+    }
+</style>
+<body>
+    <div id="slide_wrap">
+        <ul class="slide">
+              <li><div class="box">1</div></li>
+              <li><div class="box">2</div></li>
+              <li><div class="box">3</div></li>
+              <li><div class="box">4</div></li>
+              <li><div class="box">5</div></li>
+              <li><div class="box">6</div></li>
+              <li><div class="box">7</div></li>
+              <li><div class="box">8</div></li>
+              <li><div class="box">9</div></li>
+        </ul>
+    </div>
+<div id="btn_wrap">
+    <p class="btn">
+        <span class="prev"><</span>
+        <span class="next">></span>
+    </p>
+</div>
+</body>
+</html>
